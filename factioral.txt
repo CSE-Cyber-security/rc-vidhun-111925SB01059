@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class LittleBig {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter first number: ");
+        int a = sc.nextInt();
+
+        System.out.print("Enter second number: ");
+        int b = sc.nextInt();
+
+        if (a > b) {
+            System.out.println("Biggest number = " + a);
+            System.out.println("Smallest number = " + b);
+        } else {
+            System.out.println("Biggest number = " + b);
+            System.out.println("Smallest number = " + a);
+        }
+
+        sc.close();
+    }
+}
