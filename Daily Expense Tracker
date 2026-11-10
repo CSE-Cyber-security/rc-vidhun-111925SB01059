@@ -1,0 +1,66 @@
+
+import json
+from datetime import date
+
+expenses = []
+
+def add_expense():
+    amount = float(input("Enter expense amount: ₹"))
+    category = input("Enter category (Food/Travel/Shopping/Other): ")
+    description = input("Enter description: ")
+
+    expense = {
+        "date": str(date.today()),
+        "amount": amount,
+        "category": category,
+        "description": description
+    }
+
+    expenses.append(expense)
+    print("Expense added successfully!")
+
+def view_expenses():
+    if not expenses:
+        print("No expenses found!")
+        return
+
+    print("\n--- All Expenses ---")
+    for e in expenses:
+        print("Date:", e["date"])
+        print("Amount: ₹", e["amount"])
+        print("Category:", e["category"])
+        print("Description:", e["description"])
+        print("-------------------")
+
+def total_expenses():
+    total = sum(e["amount"] for e in expenses)
+    print("Total Expenses: ₹", total)
+
+def daily_expenses():
+    today = str(date.today())
+    total = sum(e["amount"] for e in expenses if e["date"] == today)
+    print("Today's Expenses: ₹", total)
+
+while True:
+    print("\n===== DAILY EXPENSE TRACKER =====")
+    print("1. Add Expense")
+    print("2. View Expenses")
+    print("3. Total Expenses")
+    print("4. Today's Expenses")
+    print("5. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        add_expense()
+    elif choice == "2":
+        view_expenses()
+    elif choice == "3":
+        total_expenses()
+    elif choice == "4":
+        daily_expenses()
+    elif choice == "5":
+        print("Thank you for using Expense Tracker!")
+        break
+    else:
+        print("Invalid choice! Try again.")
